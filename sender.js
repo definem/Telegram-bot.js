@@ -1,19 +1,4 @@
-// const bot = new Bot(
-//   "6049056801:AAFZlNjzOBamhA-r8IlMh2Q99PhEOQ7xSzA",
-//   "5625397913"
-// );
-
-// const input = document.getElementById("input");
-// const btn = document.getElementById("btn");
-
-// btn.addEventListener("click", () => {
-//   bot
-//     .sendMessage(input.value, null, null, true)
-//     .then((res) => {
-//       console.log("Success!", bot.sendMessage("Shu userdan: @" + res.result.chat.username));
-//     })
-//     .catch((err) => console.log(err));
-// });
+// <- ---- Bismillah ---- ->
 
 const form = document.querySelector("#form");
 
@@ -21,6 +6,8 @@ let bot = {
   TOKEN: "6049056801:AAFZlNjzOBamhA-r8IlMh2Q99PhEOQ7xSzA",
   chatID: "-1001652497227",
 };
+
+// // For msgs
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -41,3 +28,24 @@ form.addEventListener("submit", e => {
     
     )
 })
+
+// // For imgs
+
+// console.log("Test");
+
+// net::ERR_SSL_PROTOCOL_ERROR
+// TypeError: Failed to fetch
+
+let form2 = document.querySelector("#form2")
+.addEventListener("submit", e => {
+  e.preventDefault();
+
+  const imageUrl = document.querySelector("#img_url").value;
+  
+  fetch(`https://api.telegra.org/bot${bot.TOKEN}/sendPhoto?chat_id=${bot.chatID}&photo=${imageUrl}`)
+  .then(succ => {
+    console.log(succ);
+  }, err => {
+    console.log(err);
+  })
+});
